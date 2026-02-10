@@ -1,0 +1,63 @@
+#!/usr/bin/env bash
+
+a=2
+b=2
+if [[ $a == $b ]]; then
+	echo 'a and b are the same'
+fi
+
+
+c=3
+d=4
+#if ! [[$c == $d ]]; then //also works the same
+if [[ $c != $d ]]; then
+        echo 'a and b are not the same'
+fi
+
+
+
+if [[ -f names.txt ]]; then
+	echo 'file.txt is exists and is a file'
+fi
+
+
+
+while [[ -f names.txt ]]; do
+        echo 'file.txt is exists and is a file'
+	sleep 1
+done
+
+echo 'file is gone'
+
+
+until [[ -f names.txt ]]; do
+        echo 'txt file is not exist'
+        sleep 1
+done
+
+echo 'file is exist'
+
+#its not mandatory to have [[]] in if we can have anything in it like
+
+if ls; then
+	echo "ls worked"
+fi
+
+if true; then
+	echo "true"
+else
+	echo "false"
+fi
+
+
+if apt-get update; then
+	echo 'it worked'
+else
+	echo 'its not worked'
+fi
+
+
+[[ -f file.txt ]] 
+echo $? #0
+
+[[ -f file.txt  ]] && echo it exist

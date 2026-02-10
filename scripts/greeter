@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+greet(){
+	local name=$1 #without local keyword its a global variable 
+	echo "hello $name"
+	return 5
+}
+
+
+
+for name in "$@"; do
+#	./hello "$name" #script can run another script
+	greet "$name" >> names.txt
+
+done
+
+
+var=$(greet dave)
+echo "var is $var"
+
+if [[ $? == 0 ]]; then
+	echo "Success!"
+else
+	echo "Something not right:("
+fi
+
+echo $?
