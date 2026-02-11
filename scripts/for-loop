@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+for name in foo bar baz; do
+	echo "Name is $name"
+done
+
+
+for thing in {a..f}; do
+	echo "Thing in $thing"
+done
+
+
+for number in {1..7}; do
+	echo "Number is $number"
+done
+
+max=5
+for ((i=0; i< max;  i++)); do
+	echo "i is $i"
+done

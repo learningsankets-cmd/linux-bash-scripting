@@ -1,4 +1,11 @@
 #!/usr/bin/env bash
+
+commitIt(){
+	read -p 'Enter commit msg: ' commitMessage
+        git commit -m "Added $commitMessage"
+        git push -u origin "$currentBranch"
+
+}
 git init
 git add .
 currentBranch=$(git branch --show-current)
@@ -7,11 +14,8 @@ read -p 'Do you want to create new branch (y/n) : ' ch
 if [[ $ch == "y" ]]; then
 	read -p 'Enter branch name: ' branchName
 	git checkout -b "$branchName"
-	read -p 'Enter commit msg: ' commitMessage
-	git commit -m "Added $commitMessage"
-	git push -u origin "$branchName"
+	commitIt
 else
-	read -p 'Enter commit msg: ' commitMessage
-        git commit -m "Added $commitMessage"
-	git push -u origin "$currentBranch"
+	echo "Continuing with $currentBranch"
+	commitIt
 fi
