@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
 git init
 git add .
-currentBranch=git status
-read -p 'Do you want to create new branch: ' ch
-if [[ ch ]]; then
+currentBranch=(git status)
+echo "$currentBranch"
+read -p 'Do you want to create new branch (y/n) : ' ch
+if [[ $ch == "y" ]]; then
 	read -p 'Enter branch name: ' branchName
 	git checkout -b "$branchName"
 	read -p 'Enter commit msg: ' commitMessage
