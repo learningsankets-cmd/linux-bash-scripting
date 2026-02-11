@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 git init
 git add .
-currentBranch=$(git status)
+currentBranch=$(git branch --show-current)
 echo "$currentBranch"
 read -p 'Do you want to create new branch (y/n) : ' ch
 if [[ $ch == "y" ]]; then
