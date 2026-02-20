@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+s=$1
+
+case "$s" in
+	1)echo One;;
+	2)echo Two;;
+	*)echo Wrong;;
+esac
+
+for name in "$@"; do
+	case "$name" in
+		d* | m*) echo hello "$name";;  #| its or 
+		b*) echo hi "$name";;
+		*)echo goodbye "$name";;
+	esac
+done
+
+
+
+ch1='sanket'
+
+case "$ch1" in 
+	sa*) echo matched sa*;&
+	sanket) echo matched sanket;&
+	s*) echo matched s*;&
+	*) echo not matched;&
+esac
