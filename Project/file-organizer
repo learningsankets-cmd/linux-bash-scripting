@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+
+
+TARGET_DIR="${1:-.}"  #$1 - first arg, :- - nothing is passed . - current location
+
+#create folders with mkdir -p (if exist dont throw an error)
+mkdir -p "$TARGET_DIR/Images"
+mkdir -p "$TARGET_DIR/Documents"
+mkdir -p "$TARGET_DIR/Videos"
+mkdir -p "$TARGET_DIR/Music"
+mkdir -p "$TARGET_DIR/Text"
+mkdir -p "$TARGET_DIR/Others"
+
+
+echo "Organizing filr in : $TARGET_DIR"
+
+
+for file in "$TARGET_DIR"/*; do
+
+	if [[ -d "$file" ]]; then  #skip if its folder
+		continue
+	fi
+
+	
+	ext="${file##*.}" # extracts ##*. removes everything upto nad inclusing the last .(dot) e.g img.png -> png also called parameter expansion
+
+
+	case "$ext" in
+		jpg|jpeg|png|gif)
+			mv "$file" "$TARGET_DIR/Images"
+			echo "$file moved -> Images"
+			;;
+		txt)
+			mv "$file" "$TARGET_DIR/Text"
+			echo "$file moved -> Text"
+			;;
+		
+		*)
+			mv "$file" "$TARGET_DIR/Others"
+			echo "$file moved -> Others"
+			;;
+	esac
+
+done
+
+echo "Completed!"

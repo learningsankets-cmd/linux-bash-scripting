@@ -1,0 +1,72 @@
+#!/usr/bin/env bash
+
+array=(foo bar baz)
+
+echo "${array[0]}"
+echo "${array[1]}"
+echo "${array[2]}"
+echo "${array[3]}"
+echo "${array[-1]}"  #prints the last element similarly can be -2 -3 to print from end
+
+
+idx=2
+
+echo "${array[idx]}"
+echo "${array[$idx]}"
+
+echo "*: ${array[*]}"
+echo "@: ${array[@]}"
+
+#loop
+
+for item in "${array[*]}"; do
+	echo "item is: $item"
+done
+
+
+for item1 in "${array[@]}"; do
+        echo "item is: $item1"
+done
+
+
+
+declare -a array1=(    #-a for indexed arrays try help declare
+
+	foo
+	bar
+	baz
+	'hello there'
+)
+
+
+newarray=("${array1[@]}")
+
+newarray+=(new items)
+
+
+echo "Copy array: ${newarray[*]}"
+
+
+
+for item in ${array1[@]}; do
+	echo "Without quote: $item"
+done
+
+
+
+
+for item in "${array1[@]}"; do
+	echo "with quotes: $item"
+done
+
+
+
+
+declare -p array1
+
+
+#length of an array
+
+echo "${#array1[@]}"
+echo "${#array1[3]}"  #length of element at 3rd index
+
