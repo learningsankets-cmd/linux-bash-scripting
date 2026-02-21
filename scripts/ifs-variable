@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+
+array=(
+	foo
+	bar
+	baz
+
+	'hello there'
+)
+
+
+(
+IFS=hello
+IFS=,
+echo ""
+echo "$IFS"
+for item in "${array[*]}"; do
+	echo "item is: $item"
+done
+)
+
+echo "$IFS"

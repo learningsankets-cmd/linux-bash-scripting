@@ -1,0 +1,48 @@
+#!/usr/bin/env bash
+
+echo "using backticks"
+thing=`whoami`
+echo "thing is $thing"
+
+
+
+whoami
+echo `whoami` #works fine
+echo `echo `whoami`` # prints "whoami"
+echo `echo \`whoami\`` # prints "sanket"
+echo `echo \`echo \\\`whoami\\\`\``
+
+
+echo 'using $() notation'
+
+echo $(whoami)
+echo $(echo $( echo $(whoami)))
+
+
+echo "custom code as well"
+
+i=6
+my-func() {
+	i=019
+	echo  hello
+}
+
+
+thing=$(my-func)
+
+echo "$thing"
+
+echo "i is $i" # bec that $() is subshell means runs program in different env that current one
+
+
+my-func
+echo "$i" #thats the normal behaviour
+
+
+
+echo "Alternate syntax"
+
+thing=${ my-func; }  #only works for bash >5.3 
+echo "$thing"
+echo "$i"
+

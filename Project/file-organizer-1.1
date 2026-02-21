@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+
+TARGET_DIR=${1:-.}
+
+
+mkdir -p "$TARGET_DIR/Text"
+
+
+for file in "$TARGET_DIR"/*; do
+
+	if [[ -d "$file" ]]; then
+		continue
+	fi 
+	
+	echo "$file"
+	
+	file_extension="${file##*.}"
+	
+	echo "$file_extenstion"
+
+
+	case "$file_extension" in
+		txt)
+			mv "$file" "$TARGET_DIR/Text"
+			echo "Moved $file -> /Text"
+			;;
+	esac
+done

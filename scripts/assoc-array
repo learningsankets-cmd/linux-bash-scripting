@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+
+#if ! declare -A arr; then
+#	echo "failed" >&2
+#	exit 1
+#fi
+
+declare -A arr
+
+arr[foo]=1
+arr[baz]=2
+arr[bar]=3
+
+echo "foo- ${arr[foo]}"
+echo "@- ${arr[@]}"
+echo "*- ${arr[*]}"
+
+
+for key in "${!arr[@]}"; do
+	value="${arr[$key]}"
+	echo "$key=$value"
+done
