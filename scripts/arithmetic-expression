@@ -1,0 +1,79 @@
+#!/usr/bin/env bash
+
+
+thing=$((2+2))
+
+echo "thing is $thing"
+
+
+a=2
+b=9
+
+echo "$((a + b))"
+
+
+n=hello
+h=there
+
+echo $((n + h))  # vealuates to 0 as these are strings
+
+((c= 5 ** 4))
+
+echo "c = $c"
+
+# ((i++, ++i. i >> , i <<))
+
+
+((max = a > b ? a : b)) #ternary operator
+
+echo "max is: $max"
+
+x=10
+
+if ((x % 2)); then
+	echo "Something"
+else
+	echo "Something else"
+fi
+
+
+f=$1
+g=$2
+
+((h=f / g))
+
+echo "h = $h"
+
+read -p "enter your number" num
+
+isEven(){
+	if (( $num % 2 )); then
+		echo "$num is odd"
+	else
+		echo "$num is even"
+	fi
+}
+
+
+
+isEven
+
+
+#set -e : exits when there is an error in script
+
+k=0
+
+while (( k<10 )); do
+	echo "k is $k"
+	((k++)) #return error so set -e will exit early as this exp is post increment and 0 will produce error and considered as error befor its value even incremented //imp behavior of math exp in bash
+done
+
+
+
+l=06  # its treats it like octal so ca't use above 07 use as binaru
+l=09
+echo "$l"
+echo $(( l ))  #removes leading 0's 
+echo $(( 10#$l ))
+
+

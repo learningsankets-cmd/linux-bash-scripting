@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+words=$(grep d /usr/share/dict/words)
+
+i=0
+while read -r word; do
+	echo "$word"
+	(( i++ ))
+done <<< "$words"  # its called herestring
+
+echo "found $i words"
+
+#grep -c d /usr/share/dict/words
+
+
+#Actual process-substitution >(...)
+
+j=0
+
+while read -r word; do
+	echo "$word"
+	(( j++ ))
+done< <(grep d /usr/share/dict/words) # no need to wait for grep to finsish means all data is not in memmory still it works but but we dont know exit code of grep we dont know error or not as it masks it
+
+
+echo "Now $j words found"
+
+cat <(uname)
