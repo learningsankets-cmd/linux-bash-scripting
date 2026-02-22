@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+echo "============================================"
+echo "System Report -- $(date '+%Y/%m/%d %H:%M:%S')"
+echo "============================================"
+
+
+
+echo "Basic System Details: "
+echo "$(cat /etc/os-release)"
+echo""
+echo "CPU details: "
+echo "$(nproc)"
+lscpu
+UPTIME=$(uptime -p)
+echo ""
+echo "UPTIME: $UPTIME"
+echo ""
+echo "Memory details: $(free -h)"
+echo ""
+echo "Disk Details: $(df -h)"
+
+
