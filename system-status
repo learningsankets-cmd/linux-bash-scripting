@@ -1,23 +1,67 @@
 #!/usr/bin/env bash
 
+
+DATE=$(date '+%Y-%m-%d %H:%M:%S')
 echo "============================================"
-echo "System Report -- $(date '+%Y/%m/%d %H:%M:%S')"
+echo "System Report -- $DATE"
 echo "============================================"
 
 
+get-basic-details() {
+	echo "Basic System Details: "
+	cat /etc/os-release
+}
 
-echo "Basic System Details: "
-echo "$(cat /etc/os-release)"
-echo""
-echo "CPU details: "
-echo "$(nproc)"
-lscpu
-UPTIME=$(uptime -p)
-echo ""
-echo "UPTIME: $UPTIME"
-echo ""
-echo "Memory details: $(free -h)"
-echo ""
-echo "Disk Details: $(df -h)"
+
+get-cpu-details() {
+	echo "CPU details: "
+	nproc
+	lscpu
+}
+
+get-uptime() {
+	UPTIME=$(uptime -p)
+	echo "UPTIME: $UPTIME"
+}
+
+get-memory-details() {
+	echo "Memory details: $(free -h)"
+	echo "Disk Details: $(df -h)"
+}
+
+
+get-current-user() {
+	echo "Now logged-in as: $(whoami)"
+}
+
+
+main() {
+
+	echo "---BASIC DETAILS---"
+	get-basic-details
+
+	echo ""
+	echo "---CPU DETAILS---"
+	get-cpu-details
+
+	echo ""
+	echo "---SYSTEM UPTIME---"
+	get-uptime
+
+	echo ""
+	echo "---MEMORY DETAILS---"
+	get-memory-details
+
+	echo ""
+	get-current-user
+
+	echo "Generated at: $DATE"
+
+}
+
+
+main
+
+
 
 
